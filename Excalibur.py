@@ -52,6 +52,7 @@ def main(argv):
                                                  args.batch_size),
         steps=args.train_steps)
 
+    ##dont need this
     # Evaluate the model.
     eval_result = classifier.evaluate(
         input_fn=lambda:iris_data.eval_input_fn(test_x, test_y,
@@ -73,6 +74,8 @@ def main(argv):
                                                 labels=None,
                                                 batch_size=args.batch_size))
 
+    # we can change this easily to show top 3 reccomendations or something
+    
     for pred_dict, expec in zip(predictions, expected):
         template = ('\nPrediction is "{}" ({:.1f}%), expected "{}"')
 
