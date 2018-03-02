@@ -62,6 +62,8 @@ def main(argv):
     print('\nTest set accuracy: {accuracy:0.3f}\n'.format(**eval_result))
 
     # Generate predictions from the model
+
+    print("Hi, we want to get to know you a little bit better so we can place you with the best volunteer oppertunity!!\n")
     expected = ['Classroom language link volunteer', 'distribute groceries to those in need','Intake assistant for hopital', 'Visiting elderly at senior facility','ETHS science fair']
     predict_x = {
         'Age':[int(input("What is your age? "))],
@@ -83,7 +85,7 @@ def main(argv):
     # we can change this easily to show top 3 reccomendations or something
     
     for pred_dict, expec in zip(predictions, expected):
-        template = ('\nPrediction is "{}" ({:.1f}%)')
+        template = ('\nWe recconmend you volunteer with {} ({:.1f}%)')
 
         class_id = pred_dict['class_ids'][0]
         probability = pred_dict['probabilities'][class_id]
