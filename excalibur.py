@@ -83,13 +83,13 @@ def main(argv):
     # we can change this easily to show top 3 reccomendations or something
     
     for pred_dict, expec in zip(predictions, expected):
-        template = ('\nPrediction is "{}" ({:.1f}%), expected "{}"')
+        template = ('\nPrediction is "{}" ({:.1f}%)')
 
         class_id = pred_dict['class_ids'][0]
         probability = pred_dict['probabilities'][class_id]
 
         print(template.format(volun_data.Organization[class_id],
-                              100 * probability, expec))
+                              100 * probability))
 
 
 if __name__ == '__main__':
