@@ -44,7 +44,7 @@ def main(argv):
         # Two hidden layers of 10 nodes each.
         hidden_units=[10, 10],
         # The model must choose between 3 classes.
-        n_classes=3)
+        n_classes=5)
 
     # Train the Model.
     classifier.train(
