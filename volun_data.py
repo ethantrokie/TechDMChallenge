@@ -15,8 +15,8 @@ CSV_COLUMN_NAMES = ['Age','children', 'teenagers',
 Organization = ['Classroom language link volunteer', 'distribute groceries to those in need','Intake assistant for hopital', 'Visiting elderly at senior facility','ETHS science fair']
 
 def maybe_download():
-    train_path = "/Users/ethantrokie/Downloads/TECHDM challenge - Sheet2.csv"
-    test_path = "/Users/ethantrokie/Downloads/TECHDM challenge - Sheet2.csv"
+    train_path = "TECHDM challenge - Sheet2.csv"
+    test_path = "TECHDM challenge - Sheet2.csv"
 
 
 
