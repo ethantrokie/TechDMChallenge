@@ -11,7 +11,9 @@
 #  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
-"""An Example of a DNNClassifier for the Iris dataset."""
+
+"""THIS CODE WAS ADAPTED FROM CODE WRITTED BY THE TENSORFLOW AUTHORS""" 
+
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
@@ -25,7 +27,7 @@ import volun_data
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--batch_size', default=100, type=int, help='batch size')
-parser.add_argument('--train_steps', default=1000, type=int,
+parser.add_argument('--train_steps', default=5000, type=int,
                     help='number of training steps')
 
 def main(argv):
@@ -43,7 +45,7 @@ def main(argv):
     classifier = tf.estimator.DNNClassifier(
         feature_columns=my_feature_columns,
         # Two hidden layers of 10 nodes each.
-        hidden_units=[10, 10],
+        hidden_units=[12, 6, 12],
         # The model must choose between 3 classes.
         n_classes=5)
 
@@ -84,8 +86,8 @@ def main(argv):
 
     # we can change this easily to show top 3 reccomendations or something
     
-    for pred_dict, expec in zip(predictions, expected):
-        template = ('\nWe recconmend you volunteer with {} ({:.1f}%)')
+    for pred_dict in predictions:
+        template = ('\nWe recommend you volunteer with {} ({:.1f}%)')
 
         class_id = pred_dict['class_ids'][0]
         probability = pred_dict['probabilities'][class_id]
