@@ -22,6 +22,7 @@ import tensorflow as tf
 import iris_data
 
 
+
 parser = argparse.ArgumentParser()
 parser.add_argument('--batch_size', default=100, type=int, help='batch size')
 parser.add_argument('--train_steps', default=1000, type=int,
@@ -61,13 +62,18 @@ def main(argv):
     print('\nTest set accuracy: {accuracy:0.3f}\n'.format(**eval_result))
 
     # Generate predictions from the model
-    expected = ['Setosa', 'Versicolor', 'Virginica']
+    expected = ['Classroom language link volunteer', 'distribute groceries to those in need','Intake assistant for hopital', 'Visiting elderly at senior facility','ETHS science fair']
     predict_x = {
-        'SepalLength': [5.1, 5.9, 6.9],
-        'SepalWidth': [3.3, 3.0, 3.1],
-        'PetalLength': [1.7, 4.2, 5.4],
-        'PetalWidth': [0.5, 1.5, 2.1],
+        'Age':[int(input("What is your age? "))],
+        'children':[int(input("Would you like to help children? (Scale 1 to 10): "))],
+        'teenagers':[int(input("Would you like to help teenagers? (Scale 1 to 10): "))],
+        'elderly':[int(input("Would you like to help the elderly? (Scale 1 to 10): "))],
+        'outdoors':[int(input("Would you like to work outdoors? (Scale 1 to 10): "))],
+        'sick':[int(input("Would you like to help the sick? (Scale 1 to 10): "))],
+        'evanston':[int(input("Would you like to help to clean up Evanston? (Scale 1 to 10): "))],
+         'schools':[int(input("Would you like to help in schools? (Scale 1 to 10): "))],
     }
+
 
     predictions = classifier.predict(
         input_fn=lambda:iris_data.eval_input_fn(predict_x,
@@ -82,7 +88,7 @@ def main(argv):
         class_id = pred_dict['class_ids'][0]
         probability = pred_dict['probabilities'][class_id]
 
-        print(template.format(iris_data.SPECIES[class_id],
+        print(template.format(iris_data.Organization[class_id],
                               100 * probability, expec))
 
 

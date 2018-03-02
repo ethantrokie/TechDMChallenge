@@ -12,11 +12,13 @@ CSV_COLUMN_NAMES = ['Age','children', 'teenagers',
                     'elderly', 'outdoors',
                     'sick','evanston',
                     'schools', 'Organization']
-Organization = ['children', 'adults','sick', 'elderly','schools']
+Organization = ['Classroom language link volunteer', 'distribute groceries to those in need','Intake assistant for hopital', 'Visiting elderly at senior facility','ETHS science fair']
 
 def maybe_download():
     train_path = "/Users/ethantrokie/Downloads/TECHDM challenge - Sheet2.csv"
     test_path = "/Users/ethantrokie/Downloads/TECHDM challenge - Sheet2.csv"
+
+
 
 # def maybe_download():
 #     train_path = tf.keras.utils.get_file(TRAIN_URL.split('/')[-1], TRAIN_URL)
