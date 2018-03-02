@@ -19,7 +19,7 @@ from __future__ import print_function
 import argparse
 import tensorflow as tf
 
-import iris_data
+import volun_data
 
 
 
@@ -32,7 +32,7 @@ def main(argv):
     args = parser.parse_args(argv[1:])
 
     # Fetch the data
-    (train_x, train_y), (test_x, test_y) = iris_data.load_data()
+    (train_x, train_y), (test_x, test_y) = volun_data.load_data()
 
     # Feature columns describe how to use the input.
     my_feature_columns = []
@@ -49,14 +49,14 @@ def main(argv):
 
     # Train the Model.
     classifier.train(
-        input_fn=lambda:iris_data.train_input_fn(train_x, train_y,
+        input_fn=lambda:volun_data.train_input_fn(train_x, train_y,
                                                  args.batch_size),
         steps=args.train_steps)
 
     ##dont need this
     # Evaluate the model.
     eval_result = classifier.evaluate(
-        input_fn=lambda:iris_data.eval_input_fn(test_x, test_y,
+        input_fn=lambda:volun_data.eval_input_fn(test_x, test_y,
                                                 args.batch_size))
 
     print('\nTest set accuracy: {accuracy:0.3f}\n'.format(**eval_result))
@@ -76,7 +76,7 @@ def main(argv):
 
 
     predictions = classifier.predict(
-        input_fn=lambda:iris_data.eval_input_fn(predict_x,
+        input_fn=lambda:volun_data.eval_input_fn(predict_x,
                                                 labels=None,
                                                 batch_size=args.batch_size))
 
@@ -88,7 +88,7 @@ def main(argv):
         class_id = pred_dict['class_ids'][0]
         probability = pred_dict['probabilities'][class_id]
 
-        print(template.format(iris_data.Organization[class_id],
+        print(template.format(volun_data.Organization[class_id],
                               100 * probability, expec))
 
 
